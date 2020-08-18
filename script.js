@@ -49,8 +49,36 @@ function restoreNames(passedUsers) {
     });
 }
 
-
 restoreNames(users);
 // users === [..., {firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy'}, ...]
 
 console.log(users);
+
+
+
+
+// Task #3
+const robot = {
+    version: 16,
+    name: 'Cleaner 3000',
+    coords: [345, 12],
+    myprop: null,
+};
+
+function getRobotSchema(passedRobot) {
+    const robotEntries = Object.entries(passedRobot);
+
+    if (robotEntries.length === 0) {
+        return "Empty object!"
+    }
+
+    const robotSchema = robotEntries.map(el => {
+        return el[1] === null ? [el[0], "null"] : [el[0], typeof el[1]]; // Отдельная проверка на null, поскольку его тип определяется как object
+    });
+
+    return robotSchema;
+}
+
+// getRobotSchema(robot) === [['version', 'number'], ['name', 'string'], ['coords', 'object']]
+
+console.log(getRobotSchema(robot));
